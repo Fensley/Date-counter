@@ -22,8 +22,8 @@ function Myapp() {
     setsecond(second - 1);
   }
   const currentDate = new Date();
-  const daysToAdd = second;
-  currentDate.setDate(currentDate.getDate() + daysToAdd);
+  // const daysToAdd = second;
+  currentDate.setDate(currentDate.getDate() + second);
   const updatedDate = currentDate.toDateString();
 
   return (
@@ -40,11 +40,11 @@ function Myapp() {
       <>
         {second > 0 && (
           <p>
-            {`${second} days from`} Today is {updatedDate}
+            {`${Math.abs(second)} days from`} Today is {updatedDate}
           </p>
         )}
 
-        {second === 0 && <p>Today is {date}</p>}
+        {Math.abs(second) === 0 && <p>Today is {date}</p>}
       </>
     </div>
   );
