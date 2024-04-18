@@ -16,13 +16,12 @@ function Myapp() {
   }
 
   function counthandleplus() {
-    setsecond(second + 1);
+    setsecond(second + first);
   }
   function counthandlemwens() {
-    setsecond(second - 1);
+    setsecond(second - first);
   }
   const currentDate = new Date();
-  // const daysToAdd = second;
   currentDate.setDate(currentDate.getDate() + second);
   const updatedDate = currentDate.toDateString();
 
@@ -44,10 +43,10 @@ function Myapp() {
           </p>
         )}
 
-        {Math.abs(second) === 0 && <p>Today is {date}</p>}
+        {second === 0 && <p>Today is {date}</p>}
         {second < 0 && (
           <p>
-            {`${second} days from`} Today is {updatedDate}
+            {Math.abs(second)} days ago was {updatedDate}
           </p>
         )}
       </>
