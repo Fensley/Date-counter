@@ -40,11 +40,16 @@ function Myapp() {
       <>
         {second > 0 && (
           <p>
-            {`${Math.abs(second)} days from`} Today is {updatedDate}
+            {`${second} days from`} Today is {updatedDate}
           </p>
         )}
 
         {Math.abs(second) === 0 && <p>Today is {date}</p>}
+        {second < 0 && (
+          <p>
+            {`${second} days from`} Today is {updatedDate}
+          </p>
+        )}
       </>
     </div>
   );
