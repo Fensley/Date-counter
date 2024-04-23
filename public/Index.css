@@ -17,3 +17,17 @@ button {
 .second {
   text-align: center;
 }
+.second-input {
+  height: 20px;
+}
+.second-input:focus {
+  outline: none;
+}
+.btn {
+  position: relative;
+  right: -170px;
+  border: none;
+  border-radius: 5px;
+  width: 90px;
+  height: 30px;
+}

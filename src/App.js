@@ -8,11 +8,9 @@ function Myapp() {
   let [second, setsecond] = useState(0);
   const date = new Date().toDateString();
 
-  function handlestepplus() {
+  function handlestepplus(e) {
     setFirst(first + 1);
-  }
-  function handlestepmwens() {
-    if (first > 1) setFirst(first - 1);
+    setFirst(+e.target.value);
   }
 
   function counthandleplus() {
@@ -21,6 +19,10 @@ function Myapp() {
   function counthandlemwens() {
     setsecond(second - first);
   }
+  function resetclick() {
+    setFirst(1);
+    setsecond(0);
+  }
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + second);
   const updatedDate = currentDate.toDateString();
@@ -28,12 +30,24 @@ function Myapp() {
   return (
     <div className="container">
       <div className="second">
-        <button onClick={handlestepmwens}>-</button>
-        <span> Step: {first} </span>
-        <button onClick={handlestepplus}>+</button>
+        <span>
+          <input
+            onChange={(e) => handlestepplus(e)}
+            type="range"
+            value={first}
+          />
+          {first}
+        </span>
+
         <br></br>
         <button onClick={counthandlemwens}>-</button>
-        <span> Count: {second} </span>
+        <input
+          className="second-input"
+          type="text"
+          placeholder={second}
+          disabled
+        />
+
         <button onClick={counthandleplus}>+</button>
       </div>
       <>
@@ -42,12 +56,16 @@ function Myapp() {
             {`${second} days from`} Today is {updatedDate}
           </p>
         )}
-
         {second === 0 && <p>Today is {date}</p>}
         {second < 0 && (
           <p>
             {Math.abs(second)} days ago was {updatedDate}
           </p>
+        )}
+        {second > 0 && (
+          <button className="btn" onClick={resetclick}>
+            Reset
+          </button>
         )}
       </>
     </div>
